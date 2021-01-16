@@ -1,5 +1,7 @@
-# tesla-stock-chart-and-track
-A browser app that uses Node.js to read a .csv file and renders the different closing prices of Tesla's stock in 2020 to a chart. It also uses yahoo finance API to fetch the live tesla price for comparison. 
+# stock-price-chart
+A browser app that uses Node.js to read a .csv file and render the different closing prices of a stock on a chart.
+
+This example uses Tesla, and fetches the current market price from Yahoo Finance API for reference.
 
 Download the following dependancies:<br>
 npm install -g browserify<br>
