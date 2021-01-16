@@ -7,6 +7,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 </head>
 <body>
+<h1>Tesla Stock Price: 2020 vs Live</h1>
+<h3 class="current-price"></h3>
 <div class="chart-container" style="position: relative; height: 400px; width: 100%;"><canvas id="chart"></canvas></div>
 </body>
 </html>
@@ -18,12 +20,28 @@
     $(function() {
         var chart;
 
+        livePrice();
         initChart();
-
-        setTimeout( () => {
+        setTimeout(() => {
             setStockDataIntoChart();
         }, 5000)
 
+        function livePrice() {
+        const settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-analysis?symbol=TSLA&region=US",
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-key": "0aa2705dbemsh96a7aba4d8b3c7ep1aaed2jsn6dc95dea39ac",
+                "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+            }
+        };
+
+        $.ajax(settings).done( (response) => {
+            $('.current-price').text(`Tesla's current price is: $${response.price.regularMarketPrice.raw} USD`);
+        });
+        }
 
         function initChart() {
             let ctx = document.getElementById("chart");
