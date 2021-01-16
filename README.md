@@ -11,3 +11,7 @@ Then run the following commands in your terminal:<br>
 browserify main.js -o app.js<br>
 browserify -t brfs main.js -o app.js
 
+
+Chart made using chart.js 
+https://www.chartjs.org/
+
